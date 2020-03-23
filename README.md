@@ -19,7 +19,7 @@ TBD...
 
 * TimeWeek
 
-  ![DayMonth](images/calendar1.png)
+  ![DayMonth](images/calendar2.png)
 
 ## Copyright and License
 
