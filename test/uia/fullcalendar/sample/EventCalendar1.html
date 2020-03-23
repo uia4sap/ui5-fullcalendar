@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>TestPage - Simple Calendar</title>
+	<base href="../../../../">
+	<!--[if lte IE 9]><script>
+	(function() {
+		var baseTag = document.getElementsByTagName('base')[0];
+		baseTag.href = baseTag.href;
+	})();
+	</script><![endif]-->
+
+	<!-- FullCalendar ThemeSystem: bootstrap -->
+	<link href='https://use.fontawesome.com/releases/v5.0.6/css/all.css' rel='stylesheet'>
+	<link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet' />
+
+	<script id="sap-ui-bootstrap"
+		src="resources/sap-ui-core.js"
+		data-sap-ui-async="true"
+		data-sap-ui-libs="uia.fullcalendar"
+		data-sap-ui-theme="sap_belize">
+	</script>
+
+	<script>
+		sap.ui.getCore().attachInit(function () {
+			// event 1
+			var eventDoc1 = new uia.fullcalendar.EventDoc({
+				eventId: "A",
+				title: "A",
+				start: "2020-03-20T10:30:00",
+				end: "2020-03-20T11:30:00",
+				url: "http://www.apple.com"
+			});
+
+			// event 2
+			var eventDoc2 = new uia.fullcalendar.EventDoc({
+				eventId: "B",
+				title: "B",
+				start: "2020-03-20T15:30:00",
+				end: "2020-03-20T17:30:00",
+				url: "http://www.google.com"
+			});
+
+			// header
+			var oHeader = new uia.fullcalendar.options.Header();
+			// header: left
+			oHeader.addAggregation("left", new uia.fullcalendar.options.HeaderButton({ type: uia.fullcalendar.HeaderButton.PrevYear }));
+			oHeader.addAggregation("left", new uia.fullcalendar.options.HeaderButton({ type: uia.fullcalendar.HeaderButton.Prev }));
+			oHeader.addAggregation("left", new uia.fullcalendar.options.HeaderButton({ type: uia.fullcalendar.HeaderButton.Next }));
+			oHeader.addAggregation("left", new uia.fullcalendar.options.HeaderButton({ type: uia.fullcalendar.HeaderButton.NextYear }));
+			// header: center
+			oHeader.addAggregation("center", new uia.fullcalendar.options.HeaderButton({ type: uia.fullcalendar.HeaderButton.Title }));
+			// header: right
+			oHeader.addAggregation("right", new uia.fullcalendar.options.HeaderButton({ type: uia.fullcalendar.HeaderButton.Today, joinNext: true }));
+			oHeader.addAggregation("right", new uia.fullcalendar.options.HeaderButton({ type: uia.fullcalendar.HeaderButton.TimeWeek }));
+			oHeader.addAggregation("right", new uia.fullcalendar.options.HeaderButton({ type: uia.fullcalendar.HeaderButton.DayMonth }));
+
+			// calendar
+			var oCalendar = new uia.fullcalendar.EventCalendar({
+				viewType: uia.fullcalendar.ViewType.TimeWeek,
+				themeSystem: "bootstrap"
+			});
+			oCalendar.setAggregation("header", oHeader);
+			oCalendar.addEvent(eventDoc1);
+			oCalendar.addEvent(eventDoc2);
+
+			// show
+			oCalendar.placeAt("content");
+		});
+	</script>
+</head>
+<body id="content" class="sapUiBody">
+</body>
+</html>

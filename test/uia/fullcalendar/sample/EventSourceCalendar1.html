@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>TestPage - Calendar using DataBinding</title>
+	<base href="../../../../">
+	<!--[if lte IE 9]><script>
+	(function() {
+		var baseTag = document.getElementsByTagName('base')[0];
+		baseTag.href = baseTag.href;
+	})();
+	</script><![endif]-->
+	<script id="sap-ui-bootstrap"
+		src="resources/sap-ui-core.js"
+		data-sap-ui-async="true"
+		data-sap-ui-libs="uia.fullcalendar"
+		data-sap-ui-theme="sap_belize">
+	</script>
+
+	<script>
+		sap.ui.getCore().attachInit(function () {
+			// event display
+			var oEventDisplay = new uia.fullcalendar.options.EventDisplay();
+
+			// calendar
+			var oCalendar = new uia.fullcalendar.EventSourceCalendar({
+				height: "200px",
+				viewType: uia.fullcalendar.ViewType.DayMonth,
+				openEvent: true
+			});
+			oCalendar.setAggregation("eventDisplay", oEventDisplay);
+			oCalendar.attachEventsFetch(function(oEvent) {
+				var successCallback = oEvent.getParameter("successCallback");
+				successCallback([
+					{
+						id: "MA-0115F",
+						title: "MA monthly",
+						start: "2020-03-20 11:30:00+0800",
+						end: "2020-03-20 15:30:00+0800",
+						backgroundColor: "rgba(128,255,0,0.6)",
+						textColor: "rgba(0,0,0,1.0)",
+						url: null
+					},
+					{
+						id: "INSP-1026M",
+						title: "Insp Daily",
+						start: "2020-03-24 19:30:00+0800",
+						end: "2020-03-24 22:30:00+0800",
+						backgroundColor: "rgba(255,0,0,0.6)",
+						textColor: "rgba(255,255,255,1.0)",
+						url: "http://www.google.com"
+					}
+				]);
+			});
+			
+			// show
+			oCalendar.placeAt("content");
+		});
+	</script>
+</head>
+<body id="content" class="sapUiBody">
+</body>
+</html>

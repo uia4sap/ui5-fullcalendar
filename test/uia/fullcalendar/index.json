@@ -1,0 +1,45 @@
+{
+	"uia.fullcalendar": {
+		"icon": "sap-icon://calendar",
+		"name": "fullcalendar for UI5",
+		"description": "fullcalendar for UI5",
+		"source" : "https://github.com/uia4w/uia-fullcalendar",
+		"documentation": "https://github.com/uia4w/uia-fullcalendar/blob/master/README.md",
+		"demo" : "https://github.com/uia4w/uia-fullcalendar/index.html",
+		"license": "Apache 2.0",
+		"version": "1.0.0",
+		"content": {
+			"SimpleCalendar": {
+				"id": "EventCalendar",
+				"name": "EventCalendar",
+				"type": "control",
+				"description": "EventCalendar Samples",
+				"samples": [
+					{
+						"id": "EventCalendar1",
+						"name": "Event Calandar",
+						"description": null
+					},
+					{
+						"id": "EventCalendar2",
+						"name": "Using Databinding",
+						"description": null
+					}
+				]
+			},
+			"EventSourceCalendar": {
+				"id": "EventSourceCalendar",
+				"name": "EventSourceCalendar",
+				"type": "control",
+				"description": "EventSourceCalendar Samples",
+				"samples": [
+					{
+						"id": "EventSourceCalendar1",
+						"name": "using EventSource",
+						"description": null
+					}
+				]
+			}
+		}
+	}
+}

@@ -1,0 +1,5 @@
+dist/
+node_modules/
+test/ui5lab/browser/
+package-lock.json
+src/uia/fullcalendar/3rdparty/
