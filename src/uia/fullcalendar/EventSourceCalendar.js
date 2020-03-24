@@ -42,9 +42,13 @@ sap.ui.define([
 
                 height: { type: "string", group: "sizing", default: undefined },
 
-                aspectRatio: { type: "float", group: "sizing", default: 1.35 },
+                aspectRatio: { type: "float", group: "sizing", default: undefined },
 
                 locale: { type: "string", group: "locale", defaultValue: "en" },
+
+                firstDay: { type: "int", group: "locale", defaultValue: undefined },
+                
+                timeZone: { type: "string", group: "locale", defaultValue: "local" },
 
                 openEvent: { type: "boolean", group: "action", defaultValue: false }
             },
@@ -90,7 +94,7 @@ sap.ui.define([
             Control.apply(this, arguments);
         },
 
-        setAspectHeight: function(height) {
+        setHeight: function(height) {
             this.setProperty("height", height, true);
             if(this.__calendar) {
                 this.__calendar.setOption("height", aspectRatio);
@@ -104,10 +108,10 @@ sap.ui.define([
             }
         },
 
-        setAspectRatio: function(aspectRatio) {
-            this.setProperty("aspectRatio", aspectRatio, true);
+        setFirstDay: function(firstDay) {
+            this.setProperty("firstDay", firstDay, true);
             if(this.__calendar) {
-                this.__calendar.setOption("aspectRatio", aspectRatio);
+                this.__calendar.setOption("firstDay", firstDay);
             }
         },
 
@@ -136,9 +140,11 @@ sap.ui.define([
             var headerButton = uia.fullcalendar.HeaderButton;
             var model = {
                 plugins: ["dayGrid", "timeGrid", "bootstrap"],
+                timeZone: this.getTimeZone(),
                 height: this.getHeight(),
                 aspectRatio: this.getAspectRatio(),
-                locale: this.getLocale(),
+                locale: this. getLocale(),
+                firstDay: this.getFirstDay(),
                 themeSystem: this.getThemeSystem(),
                 defaultView: this.getViewType(),
                 allDaySlot: this.getAllDaySlot(),

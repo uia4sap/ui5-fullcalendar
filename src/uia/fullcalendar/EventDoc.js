@@ -8,7 +8,7 @@ sap.ui.define([
 ) {
     "use strict";
 
-    var EventDoc = Element.extend("uia.fullcalendar.Element", /** @lends uia.fullcalendar.Element.prototype */ {
+    var EventDoc = Element.extend("uia.fullcalendar.EventDoc", /** @lends uia.fullcalendar.EventDoc.prototype */ {
 
         metadata: {
 

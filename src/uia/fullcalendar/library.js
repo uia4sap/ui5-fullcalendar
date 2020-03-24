@@ -38,6 +38,7 @@ sap.ui.define([
 			"uia.fullcalendar.EventSourceCalendar"
 		],
 		elements: [
+			"uia.fullcalendar.EventBuilder",
 			"uia.fullcalendar.EventDoc",
 			"uia.fullcalendar.options.EventDisplay",
 			"uia.fullcalendar.options.Header",

@@ -9,7 +9,53 @@ The resources of FullCalendar
 
 ## How To
 
+### uia.fullcalendar.EventCalendar
+
 TBD...
+
+### uia.fullcalendar.EventSourceCalendar
+
+View:
+```xml
+<EventSourceCalendar
+        id="calendar"
+        openEvent="true"
+        aspectRatio="4"
+        eventsFetch="onQueryEvents" />
+```
+
+Controller:
+
+The structure of the event is [EventObject](https://fullcalendar.io/docs/event-object) of FullCalendar.
+
+
+```js
+onQueryEvents: funciton(oEvent) {
+  // objects of FullCalendar
+  var fetchInfo = oEvent.getParameter("fetchInfo");
+  var successCallback = oEvent.getParameter("successCallback");
+
+  // date period the calendar is displaying currently
+  var from: fetchInfo.start.toDateTimeString(),
+  var to: fetchInfo.end.toDateTimeString(),
+
+  // prepare events
+  var events = [];
+  events.push({
+    id: ...,
+    title: ...,
+    start: ...,
+    end: ...,
+    textColor: ...,
+    backgroundColor: ...,
+    borderColor: ...,
+    url: ...
+  });
+
+  // update to the calendar
+  successCallback(events);
+}
+```
 
 ## Examples
 
@@ -19,7 +65,7 @@ TBD...
 
 * TimeWeek
 
-  ![DayMonth](images/calendar1.png)
+  ![DayMonth](images/calendar2.png)
 
 ## Copyright and License
 

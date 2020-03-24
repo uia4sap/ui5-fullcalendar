@@ -44,9 +44,13 @@ sap.ui.define([
 
                 height: { type: "int", group: "sizing", default: undefined },
 
-                aspectRatio: { type: "float", group: "sizing", default: 1.35 },
+                aspectRatio: { type: "float", group: "sizing", default: undefined },
 
                 locale: { type: "string", group: "locale", defaultValue: "en" },
+
+                firstDay: { type: "int", group: "locale", defaultValue: undefined },
+                
+                timeZone: { type: "string", group: "locale", defaultValue: "local" },
 
                 openEvent: { type: "boolean", group: "action", defaultValue: false }
             },
@@ -89,7 +93,7 @@ sap.ui.define([
             Control.apply(this, arguments);
         },
 
-        setAspectHeight: function(height) {
+        setHeight: function(height) {
             this.setProperty("height", height, true);
             if(this.__calendar) {
                 this.__calendar.setOption("height", aspectRatio);
@@ -110,9 +114,10 @@ sap.ui.define([
             }
         },
 
-        refetchEventSources: function() {
+        setFirstDay: function(firstDay) {
+            this.setProperty("firstDay", firstDay, true);
             if(this.__calendar) {
-                this.__calendar.refetchEvents();
+                this.__calendar.setOption("firstDay", firstDay);
             }
         },
 
@@ -138,10 +143,6 @@ sap.ui.define([
             this.__events = oEvents;
         },
 
-        updateCalendar: function(iDuration, bLazy, sEasing) {
-            if(this.__calendar) {}
-        },
-
         onEventClick: function(oEventInfo) {
             oEventInfo.jsEvent.preventDefault(); // don't let the browser navigate
             if(this.getOpenEvent() && oEventInfo.event.url) {
@@ -155,8 +156,10 @@ sap.ui.define([
             var model = {
                 plugins: ["dayGrid", "timeGrid", "bootstrap"],
                 height: this.getHeight(),
+                timeZone: this.getTimeZone(),
                 aspectRatio: this.getAspectRatio(),
                 locale: this.getLocale(),
+                firstDay: this.getFirstDay(),
                 themeSystem: this.getThemeSystem(),
                 defaultView: this.getViewType(),
                 allDaySlot: this.getAllDaySlot(),
